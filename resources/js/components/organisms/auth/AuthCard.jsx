@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
-import { PrimaryButton } from "../../atoms/button/PrimaryButton";
 import { Card } from "../../atoms/card/Card";
+import { HorizontalButton } from "../../molecules/form/HorizontalButton";
 
 export const AuthCard = memo((props) => {
     const { children, headerText, buttonText } = props;
@@ -13,11 +13,7 @@ export const AuthCard = memo((props) => {
                     <Card headerText={headerText}>
                         <form>
                             {children}
-                            <div className="form-group row mb-0">
-                                <div className="col-md-6 offset-md-4">
-                                    <PrimaryButton>{buttonText}</PrimaryButton>
-                                </div>
-                            </div>
+                            <HorizontalButton>{buttonText}</HorizontalButton>
                         </form>
                     </Card>
                 </div>

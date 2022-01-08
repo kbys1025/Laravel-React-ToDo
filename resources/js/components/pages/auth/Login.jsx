@@ -1,21 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+
+import { HorizontalCheckBox } from "../../molecules/form/HorizontalCheckBox";
+import { HorizontalInput } from "../../molecules/form/HorizontalInput";
+import { AuthCard } from "../../organisms/auth/AuthCard";
 
 export const Login = () => {
-    return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">ログイン</div>
+    const [emailText, setEmailText] = useState('');
+    const [passwordText, setPasswordText] = useState('');
 
-                        <div className="card-body">
-                            <p>ログインページ</p>
-                            <Link to="/">HOMEへ戻る</Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    const onChangeEmailText = (e) => setEmailText(e.target.value);
+    const onChangePasswordText = (e) => setPasswordText(e.target.value);
+
+    return (
+        <AuthCard headerText="ログイン" buttonText="ログイン">
+            <HorizontalInput
+                labelText="メールアドレス"
+                inputId="email"
+                inputType="email"
+                inputValue={emailText}
+                inputOnChange={onChangeEmailText}
+            />
+            <HorizontalInput
+                labelText="パスワード"
+                inputId="password"
+                inputType="password"
+                inputValue={passwordText}
+                inputOnChange={onChangePasswordText}
+            />
+            <HorizontalCheckBox
+                labelText="ログイン状態を保存"
+                checkBoxId="remember"
+            />
+        </AuthCard>
     );
 };
