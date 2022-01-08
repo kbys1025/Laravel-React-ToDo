@@ -1,8 +1,9 @@
 import React, { useState, memo } from "react";
 
+import { HorizontalButton } from "../../molecules/form/HorizontalButton";
 import { HorizontalCheckBox } from "../../molecules/form/HorizontalCheckBox";
 import { HorizontalInput } from "../../molecules/form/HorizontalInput";
-import { AuthCard } from "../../organisms/auth/AuthCard";
+import { MainCard } from "../../organisms/layout/MainCard";
 
 export const Login = memo(() => {
     const [emailText, setEmailText] = useState('');
@@ -12,7 +13,7 @@ export const Login = memo(() => {
     const onChangePasswordText = (e) => setPasswordText(e.target.value);
 
     return (
-        <AuthCard headerText="ログイン" buttonText="ログイン">
+        <MainCard headerText="ログイン">
             <HorizontalInput
                 labelText="メールアドレス"
                 inputId="email"
@@ -31,6 +32,7 @@ export const Login = memo(() => {
                 labelText="ログイン状態を保存"
                 checkBoxId="remember"
             />
-        </AuthCard>
+            <HorizontalButton>ログイン</HorizontalButton>
+        </MainCard>
     );
 });

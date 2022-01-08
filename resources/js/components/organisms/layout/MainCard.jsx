@@ -1,10 +1,9 @@
 import React, { memo } from "react";
 
 import { Card } from "../../atoms/card/Card";
-import { HorizontalButton } from "../../molecules/form/HorizontalButton";
 
-export const AuthCard = memo((props) => {
-    const { children, headerText, buttonText } = props;
+export const MainCard = memo((props) => {
+    const { children, headerText } = props;
     
     return (
         <div className="container">
@@ -13,7 +12,6 @@ export const AuthCard = memo((props) => {
                     <Card headerText={headerText}>
                         <form>
                             {children}
-                            <HorizontalButton>{buttonText}</HorizontalButton>
                         </form>
                     </Card>
                 </div>

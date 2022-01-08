@@ -1,7 +1,8 @@
 import React, { useState, memo } from "react";
 
+import { HorizontalButton } from "../../molecules/form/HorizontalButton";
 import { HorizontalInput } from "../../molecules/form/HorizontalInput";
-import { AuthCard } from "../../organisms/auth/AuthCard";
+import { MainCard } from "../../organisms/layout/MainCard";
 
 export const Register = memo(() => {
     const [nameText, setNameText] = useState('');
@@ -15,7 +16,7 @@ export const Register = memo(() => {
     const onChangePasswordConfirmText = (e) => setPasswordConfirmText(e.target.value);
 
     return (
-        <AuthCard headerText="アカウント作成" buttonText="登録">
+        <MainCard headerText="アカウント作成">
             <HorizontalInput
                 labelText="名前"
                 inputId="name"
@@ -44,6 +45,7 @@ export const Register = memo(() => {
                 inputValue={passwordConfirmText}
                 inputOnChange={onChangePasswordConfirmText}
             />
-        </AuthCard>
+            <HorizontalButton>登録</HorizontalButton>
+        </MainCard>
     );
 });
