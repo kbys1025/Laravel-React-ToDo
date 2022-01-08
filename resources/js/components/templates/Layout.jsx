@@ -7,8 +7,10 @@ export const Layout = (props) => {
 
     return (
         <>
-        <Header />
-        {children}
+            <Header />
+            <main className="py-4">
+                {children}
+            </main>
         </>
     );
 }
