@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 
 import { HorizontalInput } from "../../molecules/form/HorizontalInput";
 import { AuthCard } from "../../organisms/auth/AuthCard";
 
-export const Register = () => {
+export const Register = memo(() => {
     const [nameText, setNameText] = useState('');
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
@@ -46,4 +46,4 @@ export const Register = () => {
             />
         </AuthCard>
     );
-};
+});

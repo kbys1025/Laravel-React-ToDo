@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Header } from "../organisms/layout/Header";
 
-export const Layout = (props) => {
+export const Layout = memo((props) => {
     const { children } = props;
 
     return (
@@ -13,4 +13,4 @@ export const Layout = (props) => {
             </main>
         </>
     );
-}
+});

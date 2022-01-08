@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 
 import { HorizontalCheckBox } from "../../molecules/form/HorizontalCheckBox";
 import { HorizontalInput } from "../../molecules/form/HorizontalInput";
 import { AuthCard } from "../../organisms/auth/AuthCard";
 
-export const Login = () => {
+export const Login = memo(() => {
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
 
@@ -33,4 +33,4 @@ export const Login = () => {
             />
         </AuthCard>
     );
-};
+});

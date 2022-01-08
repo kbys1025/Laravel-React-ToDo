@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header = memo(() => {
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div className="container">
@@ -22,4 +22,4 @@ export const Header = () => {
             </div>
         </nav>
     );
-}
+});

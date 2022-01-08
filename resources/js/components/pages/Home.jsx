@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const Home = () => {
+export const Home = memo(() => {
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -15,4 +15,4 @@ export const Home = () => {
             </div>
         </div>
     );
-};
+});
