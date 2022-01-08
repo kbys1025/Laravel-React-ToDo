@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export const Home = () => {
     return (
@@ -8,10 +7,8 @@ export const Home = () => {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-header">Home</div>
-                            <Link to="/login">ログイン</Link>
-                            <Link to="/register">新規登録</Link>
                         <div className="card-body">
-                            
+                            Homeページ
                         </div>
                     </div>
                 </div>
