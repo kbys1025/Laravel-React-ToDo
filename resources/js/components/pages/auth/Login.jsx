@@ -12,6 +12,8 @@ export const Login = memo(() => {
     const onChangeEmailText = (e) => setEmailText(e.target.value);
     const onChangePasswordText = (e) => setPasswordText(e.target.value);
 
+    const onClickLogin = () => {};
+
     return (
         <MainCard headerText="ログイン">
             <HorizontalInput
@@ -32,7 +34,7 @@ export const Login = memo(() => {
                 labelText="ログイン状態を保存"
                 checkBoxId="remember"
             />
-            <HorizontalButton>ログイン</HorizontalButton>
+            <HorizontalButton onClick={onClickLogin}>ログイン</HorizontalButton>
         </MainCard>
     );
 });
