@@ -15,7 +15,6 @@ export const useAuth = () => {
         axios.post("/api/register", formData)
             .then((res) => {
                 setLoginUser(res.data);
-                setErrorMessages({});
                 navigate("/");
             })
             .catch((err) => {
