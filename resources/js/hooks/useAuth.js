@@ -21,7 +21,7 @@ export const useAuth = () => {
                 if (err.response.status === UNPROCESSABLE_ENTITY) {
                     setErrorMessages(err.response.data.errors);
                 } else {
-                    alert('アカウント作成に失敗しました。')
+                    alert('アカウント作成に失敗しました。');
                     console.log(err.response);
                 }
             });
@@ -29,5 +29,19 @@ export const useAuth = () => {
         [navigate, setLoginUser]
     );
 
-    return { register };
+    const logout = useCallback(() => {
+        axios.post("/api/logout")
+            .then((res) => {
+                setLoginUser(null);
+                navigate("/login");
+            })
+            .catch((err) => {
+                alert('ログアウトに失敗しました。');
+                console.log(err.response);
+            });
+        },
+        [navigate, setLoginUser]
+    );
+
+    return { register, logout };
 };
