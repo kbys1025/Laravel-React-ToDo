@@ -29,6 +29,26 @@ export const useAuth = () => {
         [navigate, setLoginUser]
     );
 
+    const login = useCallback((props) => {
+        const { formData, setErrorMessages } = props;
+
+        axios.post("/api/login", formData)
+            .then((res) => {
+                setLoginUser(res.data);
+                navigate("/");
+            })
+            .catch((err) => {
+                if (err.response.status === UNPROCESSABLE_ENTITY) {
+                    setErrorMessages(err.response.data.errors);
+                } else {
+                    alert('ログインに失敗しました。');
+                    console.log(err.response);
+                }
+            });
+        },
+        [navigate, setLoginUser]
+    );
+
     const logout = useCallback(() => {
         axios.post("/api/logout")
             .then((res) => {
@@ -43,5 +63,5 @@ export const useAuth = () => {
         [navigate, setLoginUser]
     );
 
-    return { register, logout };
+    return { register, login, logout };
 };
