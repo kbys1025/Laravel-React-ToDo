@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { useState, memo } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuth } from "../../../hooks/useAuth";
@@ -7,9 +7,13 @@ import { useLoginUser } from "../../../hooks/useLoginUser";
 export const Header = memo(() => {
     const { loginUser } = useLoginUser();
     const { logout } = useAuth();
+    const [showing, setShowing] = useState(false);
+
+    const onChangeShowing = () => setShowing(!showing);
 
     const onClickLogout = () => {        
         logout();
+        setShowing(!showing);
     };
 
     return (
@@ -32,12 +36,11 @@ export const Header = memo(() => {
                             </>
                         ) : (
                             <>
-                                <li className="nav-item dropdown">
-                                    <Link to="#" id="navbarDropdown" className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <li className={`nav-item dropdown ${showing ? 'show' : '' }`}>
+                                    <Link to="#" id="navbarDropdown" className="nav-link dropdown-toggle" onClick={onChangeShowing}>
                                         {loginUser.name} <span className="caret"></span>
                                     </Link>
-
-                                    <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div className={`dropdown-menu dropdown-menu-right ${showing ? 'show' : '' }`}>
                                         <Link to="#" className="dropdown-item" onClick={onClickLogout}>ログアウト</Link>
                                     </div>
                                 </li>
