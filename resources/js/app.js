@@ -3,13 +3,16 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import "./bootstrap";
+import { LoginUserProvider } from "./providers/LoginUserProvider";
 import { Router } from "./router/Router";
 
 function App() {
     return (
-        <BrowserRouter>
-            <Router />
-        </BrowserRouter>
+        <LoginUserProvider>
+            <BrowserRouter>
+                <Router />
+            </BrowserRouter>
+        </LoginUserProvider>
     );
 };
 
