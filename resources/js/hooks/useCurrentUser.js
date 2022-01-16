@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { useLoginUser } from "./useLoginUser";
 
-export const useLoginCheck = () => {
+export const useCurrentUser = () => {
     const { setLoginUser } = useLoginUser();
     
     const currentUser = useCallback(() => {

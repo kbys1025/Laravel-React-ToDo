@@ -6,10 +6,10 @@ import { Login } from "../components/pages/auth/Login";
 import { Register } from "../components/pages/auth/Register";
 import { Layout } from "../components/templates/Layout";
 import { Page404 } from "../components/pages/Page404";
-import { useLoginCheck } from "../hooks/useLoginCheck";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 
 export const Router = memo(() => {
-    const { currentUser } = useLoginCheck();
+    const { currentUser } = useCurrentUser();
 
     useEffect(() => {
         currentUser();
