@@ -17,10 +17,12 @@ export const Router = memo(() => {
 
     return (
         <Routes>
-            <Route exact path="/" element={<Layout><Home /></Layout>} />
-            <Route path="/login" element={<Layout><Login /></Layout>} />
-            <Route path="/register" element={<Layout><Register /></Layout>} />
-            <Route path="*" element={<Layout><Page404 /></Layout>} />
+            <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="*" element={<Page404 />} />
+            </Route>
         </Routes>
     );
 });
