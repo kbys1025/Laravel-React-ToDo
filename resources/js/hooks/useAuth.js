@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios"; 
 
 import { useLoginUser } from "./useLoginUser";
@@ -8,6 +8,9 @@ import { UNPROCESSABLE_ENTITY } from "../util";
 export const useAuth = () => {
     const { setLoginUser } = useLoginUser();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
     
     const register = useCallback((props) => {
         const { formData, setErrorMessages } = props;
@@ -35,7 +38,7 @@ export const useAuth = () => {
         axios.post("/api/login", formData)
             .then((res) => {
                 setLoginUser(res.data);
-                navigate("/");
+                navigate(from, { replace: true });
             })
             .catch((err) => {
                 if (err.response.status === UNPROCESSABLE_ENTITY) {
