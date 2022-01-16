@@ -6,7 +6,7 @@ import { useLoginUser } from "./useLoginUser";
 export const useLoginCheck = () => {
     const { setLoginUser } = useLoginUser();
     
-    const loginCheck = useCallback(() => {
+    const currentUser = useCallback(() => {
         axios.get("/api/user")
             .then((res) => {
                 setLoginUser(res.data);
@@ -19,5 +19,5 @@ export const useLoginCheck = () => {
         [setLoginUser]
     );
 
-    return { loginCheck };
+    return { currentUser };
 };

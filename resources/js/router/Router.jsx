@@ -9,10 +9,10 @@ import { Page404 } from "../components/pages/Page404";
 import { useLoginCheck } from "../hooks/useLoginCheck";
 
 export const Router = memo(() => {
-    const { loginCheck } = useLoginCheck();
+    const { currentUser } = useLoginCheck();
 
     useEffect(() => {
-        loginCheck();
+        currentUser();
     }, []);
 
     return (
