@@ -1,11 +1,10 @@
 import React, { memo } from "react";
+import { Button } from "./Button";
 
 export const PrimaryButton = memo((props) => {
     const { children, onClick } = props;
 
     return (
-        <button type="button" className="btn btn-primary" onClick={onClick} >
-            {children}
-        </button>
+        <Button color="primary" onClick={onClick}>{children}</Button>
     );
 });
