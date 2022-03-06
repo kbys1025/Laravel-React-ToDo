@@ -1,13 +1,9 @@
 import React, { memo } from "react";
 import { Button } from "../../atoms/button/Button";
 
-export const TodoTable = memo(() => {
-    const todos = [
-        { id: 1, post: 'プログラミング学習', isDone: false },
-        { id: 2, post: '散歩', isDone: true },
-        { id: 3, post: '筋トレ', isDone: false },
-        { id: 4, post: '買い物', isDone: false },
-    ];
+export const TodoTable = memo((props) => {
+    const { todos } = props;
+    const COMPLETE = 1;
 
     const onClickDone = () => {
         console.log('完了');
@@ -32,16 +28,16 @@ export const TodoTable = memo(() => {
                 {todos.map((todo) => {
                     return (
                         <tr key={todo.id} >
-                            {todo.isDone ? (
+                            {todo.status === COMPLETE ? (
                                 <>
-                                    <td scope="row" className="completed">{todo.post}</td>
+                                    <td scope="row" className="completed">{todo.todo}</td>
                                     <td>
                                         <Button color="secondary" onClick={onClickReturn}>戻す</Button>
                                     </td>
                                 </>
                             ) : (
                                 <>
-                                    <td scope="row" className="">{todo.post}</td>
+                                    <td scope="row" className="">{todo.todo}</td>
                                     <td>
                                         <Button color="success" onClick={onClickDone}>完了</Button>
                                     </td>

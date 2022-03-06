@@ -1,22 +1,10 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 
-import { useTodo } from "../../../hooks/useTodo";
 import { PrimaryButton } from "../../atoms/button/PrimaryButton";
 import { Input } from "../../atoms/input/Input";
 
-export const TodoForm = memo(() => {
-    const { createTodo } = useTodo();
-    const [todoText, setTodoText] = useState('');
-    const [todoErrorMessage, setTodoErrorMessage] = useState('');
-
-    const onChangeTodoText = (e) => setTodoText(e.target.value);
-
-    const onClickCreate = () => {
-        const formData = {
-            todo: todoText,
-        };
-        createTodo({ formData, setTodoErrorMessage, setTodoText });
-    };
+export const TodoForm = memo((props) => {
+    const { todoText, onChangeTodoText, onClickCreate, todoErrorMessage } = props;
 
     return (
         <>

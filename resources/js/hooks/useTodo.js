@@ -1,15 +1,28 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import axios from "axios";
 
 import { UNPROCESSABLE_ENTITY } from "../util";
 
 export const useTodo = () => {
+    const [todos, setTodos] = useState([]);
+
+    const getTodos = useCallback(() => {
+        axios.get("/api/todo")
+            .then((res) => {
+                setTodos(res.data.todos);
+            })
+            .catch((err) => {
+                alert('ToDoの取得に失敗しました。');
+                console.log(err.response);
+            });
+    }, []);
+
     const createTodo = useCallback((props) => {
         const { formData, setTodoErrorMessage, setTodoText } = props;
 
         axios.post("/api/todo", formData)
             .then((res) => {
-                console.log(res.status);
+                setTodos(res.data.todos);
                 setTodoErrorMessage('');
                 setTodoText('');
             })
@@ -25,5 +38,5 @@ export const useTodo = () => {
         []
     );
     
-    return { createTodo };
+    return { getTodos, todos, createTodo };
 }

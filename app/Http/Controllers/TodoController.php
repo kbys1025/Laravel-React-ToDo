@@ -9,6 +9,12 @@ use App\Todo;
 
 class TodoController extends Controller
 {
+    public function index()
+    {
+        $todos = Todo::get_todos();
+        return response()->json(['todos' => $todos]);
+    }
+
     public function store(TodoRequest $request)
     {
         $todo = new Todo;
@@ -16,6 +22,8 @@ class TodoController extends Controller
         $todo->todo = $request->todo;
         $todo->save();
 
-        return response()->json(['status' => 200, 'message' => null]);
+        $todos = Todo::get_todos();
+
+        return response()->json(['todos' => $todos]);
     }
 }
