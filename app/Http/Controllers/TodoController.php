@@ -16,7 +16,7 @@ class TodoController extends Controller
         return response()->json(['todos' => $todos]);
     }
 
-    public function store($request)
+    public function store(TodoRequest $request)
     {
         $todo = new Todo;
         $todo->user_id = Auth::id();
