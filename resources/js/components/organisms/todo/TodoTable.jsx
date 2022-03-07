@@ -2,12 +2,8 @@ import React, { memo } from "react";
 import { Button } from "../../atoms/button/Button";
 
 export const TodoTable = memo((props) => {
-    const { todos, onClickComplete, onClickReturn } = props;
+    const { todos, onClickComplete, onClickReturn, onClickDelete } = props;
     const COMPLETE = 1;
-
-    const onClickDelete = () => {
-        console.log('削除');
-    }
     
     return (
         <table className="table table-hover">
@@ -38,7 +34,7 @@ export const TodoTable = memo((props) => {
                                 </>
                             )}
                             <td>
-                                <Button color="danger" onClick={onClickDelete}>削除</Button>
+                                <Button color="danger" onClick={() => onClickDelete(todo.id)}>削除</Button>
                             </td>
                         </tr>
                     )

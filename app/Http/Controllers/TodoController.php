@@ -49,4 +49,14 @@ class TodoController extends Controller
 
         return response()->json(['todos' => $todos]);
     }
+
+    public function delete(Request $request)
+    {
+        $todo = Todo::find($request->id);
+        $todo->delete();
+
+        $todos = Todo::get_todos();
+
+        return response()->json(['todos' => $todos]);
+    }
 }

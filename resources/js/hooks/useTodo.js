@@ -67,6 +67,21 @@ export const useTodo = () => {
         },
         []
     );
+
+    const deleteTodo = useCallback((props) => {
+        const { formData } = props;
+
+        axios.post("/api/todo/delete", formData)
+            .then((res) => {
+                setTodos(res.data.todos);
+            })
+            .catch((err) => {
+                alert('ToDo削除に失敗しました。');
+                console.log(err.response);
+            });
+        },
+        []
+    );
     
-    return { getTodos, todos, createTodo, completeTodo, returnTodo };
+    return { getTodos, todos, createTodo, completeTodo, returnTodo, deleteTodo };
 }

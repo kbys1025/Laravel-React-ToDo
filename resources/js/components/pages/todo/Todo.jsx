@@ -6,7 +6,7 @@ import { TodoForm } from "../../organisms/todo/TodoForm";
 import { TodoTable } from "../../organisms/todo/TodoTable";
 
 export const Todo = memo(() => {
-    const { getTodos, todos, createTodo, completeTodo, returnTodo } = useTodo();
+    const { getTodos, todos, createTodo, completeTodo, returnTodo, deleteTodo } = useTodo();
     const [todoText, setTodoText] = useState('');
     const [todoErrorMessage, setTodoErrorMessage] = useState('');
     
@@ -35,6 +35,13 @@ export const Todo = memo(() => {
         returnTodo({ formData });
     }
 
+    const onClickDelete = (todoId) => {
+        const formData = {
+            id: todoId,
+        };
+        deleteTodo({ formData });
+    }
+
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -42,7 +49,7 @@ export const Todo = memo(() => {
                     <div className="card">
                         <div className="card-body">
                             <TodoForm todoText={todoText} onChangeTodoText={onChangeTodoText} onClickCreate={onClickCreate} todoErrorMessage={todoErrorMessage} />
-                            <TodoTable todos={todos} onClickComplete={onClickComplete} onClickReturn={onClickReturn} />
+                            <TodoTable todos={todos} onClickComplete={onClickComplete} onClickReturn={onClickReturn} onClickDelete={onClickDelete} />
                         </div>
                     </div>
                 </div>
