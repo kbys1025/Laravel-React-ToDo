@@ -37,6 +37,36 @@ export const useTodo = () => {
         },
         []
     );
+
+    const completeTodo = useCallback((props) => {
+        const { formData } = props;
+        
+        axios.post("/api/todo/complete", formData)
+            .then((res) => {
+                setTodos(res.data.todos);
+            })
+            .catch((err) => {
+                alert('ToDoステータスの変更に失敗しました。');
+                console.log(err.response);
+            });
+        },
+        []
+    );
+
+    const returnTodo = useCallback((props) => {
+        const { formData } = props;
+
+        axios.post("/api/todo/incomplete", formData)
+            .then((res) => {
+                setTodos(res.data.todos);
+            })
+            .catch((err) => {
+                alert('ToDoステータスの変更に失敗しました。');
+                console.log(err.response);
+            });
+        },
+        []
+    );
     
-    return { getTodos, todos, createTodo };
+    return { getTodos, todos, createTodo, completeTodo, returnTodo };
 }

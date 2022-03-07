@@ -2,15 +2,9 @@ import React, { memo } from "react";
 import { Button } from "../../atoms/button/Button";
 
 export const TodoTable = memo((props) => {
-    const { todos } = props;
+    const { todos, onClickComplete, onClickReturn } = props;
     const COMPLETE = 1;
 
-    const onClickDone = () => {
-        console.log('完了');
-    }
-    const onClickReturn = () => {
-        console.log('戻す');
-    }
     const onClickDelete = () => {
         console.log('削除');
     }
@@ -32,14 +26,14 @@ export const TodoTable = memo((props) => {
                                 <>
                                     <td scope="row" className="completed">{todo.todo}</td>
                                     <td>
-                                        <Button color="secondary" onClick={onClickReturn}>戻す</Button>
+                                        <Button color="secondary" onClick={() => onClickReturn(todo.id)}>戻す</Button>
                                     </td>
                                 </>
                             ) : (
                                 <>
                                     <td scope="row" className="">{todo.todo}</td>
                                     <td>
-                                        <Button color="success" onClick={onClickDone}>完了</Button>
+                                        <Button color="success" onClick={() => onClickComplete(todo.id)}>完了</Button>
                                     </td>
                                 </>
                             )}

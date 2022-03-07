@@ -27,3 +27,5 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/todo', 'TodoController@index');
 Route::post('/todo', 'TodoController@store');
+Route::post('/todo/complete', 'TodoController@complete');
+Route::post('/todo/incomplete', 'TodoController@incomplete');
